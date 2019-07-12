@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ../../partials/_head.ejs %>
+
+<body>
+   
+<div class="container-fluid">
+ <% include ../../partials/_navbar.ejs %>
+    <div class="row justify-content-center">
+        <div class="col-sm-6">
+            <div class="center-text">  
+                  <h1>My Dreamspace</h1>
+
+                        <div class="dream-buttons">
+                            <form action="/dreams/new" method="GET">
+                                <button class="btn btn-success" type="submit">Add New Dream</button>
+                            </form>
+                        </div>
+
+                  <br>
+                <% for (let i = 0; i < user.dreams.length; i++ ) {%>
+
+                    <div class="date"><strong><%=user.dreams[i].date.toString().substr(0, 3) + ", " + user.dreams[i].date.toString().substr(4, 6) + ", " + user.dreams[i].date.toString().substr(10, 5) %></strong></div>
+                    
+                    <div><a class="dreamtitle" href="/dreams/<%= user.dreams[i]._id %>"><h4><%= user.dreams[i].title %></h4></a></div>
+
+                        <% for (let x = 0; x < user.dreams[i].keywords.length; x++ ) {%>
+
+                           <div class="keyword-badges"> <%= user.dreams[i].keywords[x].word %></a></div>
+
+                        <% } %>
+                        <br>
+                        <div class="dream-buttons">
+                            <form action="/dreams/<%=dreams[i]._id%>/edit" method="get">
+                                <button class="btn btn-success" type="submit">Edit Dream</button>
+                            </form>
+                        </div>
+                        <div class="dream-buttons">
+                            <form action="/dreams/<%=dreams[i]._id%>?_method=DELETE" method="post">
+                                <button class="btn btn-success" type="submit">Delete Dream</button>
+                            </form>
+                        </div>
+                    <hr>
+                <% } %>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    <% include ../../partials/_bootstrap-links.ejs %>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ../../partials/_head.ejs %>
+
+<body>
+   
+<div class="container-fluid">
+ <% include ../../partials/_navbar.ejs %>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <div class="center-text">  
+                <div class = "page-header"> <h1><%=dream.title%></h1></div>
+                    <p><%=dream.body%></p>
+                <div class="btn-group" role="group" aria-label="Basic example">    
+                    <form action="/dreams/<%=dream._id%>/edit" method="get">
+                        <button class="btn btn-secondary" type="submit">Edit Dream</button>
+                    </form>
+
+                    <form action="/dreams/<%=dream._id%>?_method=DELETE" method="post">
+                        <button type="submit" class="btn btn-secondary">Delete Dream</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+              
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <div class="center-text">
+                <% for (let i = 0; i < keywords.length; i++){%>
+                    <div class = "card-deck">
+                        <div class="card" style="width: 15rem;">
+                            <img src="https://source.unsplash.com/random?{<%=keywords[i].word%>}" class="card-img-top" alt="<%=keywords[i].word%>">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%=keywords[i].word%></h5>
+                                    <p class="card-text"><small class="text-muted"><%=keywords[i].meaning%></small></p>
+                                </div>
+                        </div>
+                    </div>
+                <%} %>
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
+
+    <% include ../../partials/_bootstrap-links.ejs %>
+</body>
+</html>

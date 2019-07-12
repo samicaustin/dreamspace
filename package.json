@@ -1,0 +1,33 @@
+{
+  "name": "dream-blog-analyzer",
+  "version": "1.0.0",
+  "description": "Concept: Users can input their dreams in the morning and receive quick keyword based insights.",
+  "main": "server.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "connect-mongodb-session": "^2.1.1",
+    "dotenv": "^7.0.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.5.3",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thejacobian/dream-blog-analyzer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thejacobian/dream-blog-analyzer/issues"
+  },
+  "homepage": "https://github.com/thejacobian/dream-blog-analyzer#readme"
+}

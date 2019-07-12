@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ../partials/_head.ejs %>
+<body>
+<div class="container-fluid">
+    <% include ../partials/_navbar.ejs %>
+    <div class="row justify-content-center">
+        <div class="col-sm-6">
+            <div class="center-text">  
+                <h1>Search Results</h1><hr>
+                    <h3>Matching Public Dreams</h3> 
+                        <ul>
+                            <% for (let i = 0; i < publicDreams.length; i++ ) {%>
+                                <div><a class="dreamtitle" href="/dreams/<%= publicDreams[i]._id %>"><h4><%= publicDreams[i].title %></h4></a></div> 
+                                    <% for (let x = 0; x < publicDreams[i].keywords.length; x++ ) {%>
+                                        <div class="keyword-badges"> <%= publicDreams[i].keywords[x].word %></a></div>
+                                    <% } %>
+                                </li>
+                            <% } %>
+                        </ul><hr>
+
+                    <h3>Matching Private Dreams</h3> 
+                        <ul>
+                            <% for (let i = 0; i < usersDreams.length; i++ ) {%>
+                                <div><a class="dreamtitle" href="/dreams/<%= usersDreams[i]._id %>"><h4><%= usersDreams[i].title %></h4></a></div>
+                                    <% for (let x = 0; x < usersDreams[i].keywords.length; x++ ) {%>
+                                        <div class="keyword-badges"> <%= usersDreams[i].keywords[x].word %></a></div>
+                                
+                                    <% } %>
+                            <% } %>
+                                
+            </div>
+        </div>
+    </div>
+</div>
+    <% include ../partials/_bootstrap-links.ejs %>
+</body>
+</html>

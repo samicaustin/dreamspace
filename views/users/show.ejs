@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ../../partials/_head.ejs %>
+
+
+
+<div class="container-fluid">
+    <% include ../../partials/_navbar.ejs %>
+
+<body> 
+    <div class="row justify-content-center">
+        <div class="col-sm-6">
+            <div class="center-text">  
+
+                <h1><%= user.username%>'s Profile</h1>
+
+                <div class="profile-img">
+                <img src="https://source.unsplash.com/random/240x240/?{face}" class="img-thumbnail" alt="face">
+                </div><br/><br/>
+
+                <div class="dream-buttons">
+                    <a href="/users/<%= user._id %>/edit"><button type="submit" class="btn btn-success">Edit Profile</button></a>
+                </div>
+                <div class="dream-buttons">
+                    <form action="/users/<%= user._id%>?_method=DELETE" method="post">
+                        <button type="submit" class="btn btn-success">Delete Profile</button>
+                    </form>
+                </div>
+                <hr class="personal-leaderboard">
+                    <div class="personal-leaderboard"><h3>Your Most Recent Themes/Keywords</h3>
+                        <% for (let i = 0; i < user.dreams.length && i < 3; i++ ) {%>                    
+                            <% for (let x = 0; x < user.dreams[i].keywords.length; x++) {%>
+                                    <p class="all-caps"><%= user.dreams[i].keywords[x].word %></p>
+                            <% } %>
+                        <% } %>
+                    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</div>
+
+    <% include ../../partials/_bootstrap-links.ejs %>
+
+</html>

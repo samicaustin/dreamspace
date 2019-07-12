@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ../../partials/_head.ejs %>
+
+<body>
+
+<div class="container-fluid">
+    <% include ../../partials/_navbar.ejs %>
+
+    <div class="row justify-content-center">
+        <div class="col-sm-6">
+            <div class="center-text">  
+                <h1>Login</h1>
+                    <form class="login-form" action="/auth/login" method="POST">
+                        <div class="form-text">Username: </div><input class="login" type="text" name="username"><br>
+                        <div class="form-text">Password: </div><input class="login" type="password" name="password"><br>
+                        <button class="btn btn-success" type="submit">Submit</button>
+                    </form>
+                    <p><strong><%=message%></strong></p>
+                    <hr>
+                    <div class="public-leaderboard"><h3>Top Themes/Keywords</h3>
+        
+                    <% for (let i = 0; i < keywords.length && i < 10; i++) {%>
+                        <% if (keywords[i].count > 0) { %>
+                            <p class="all-caps"><%= keywords[i].word %>: <%= keywords[i].count %></p>
+                       <% } %>
+                    <% } %>
+                    
+                    </div>
+                    <div class="signup-line"><a href="/auth/register"><p>Don't have an account? Sign up.</p></a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <% include ../../partials/_bootstrap-links.ejs %>
+</body>
+</html>
